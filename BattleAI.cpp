@@ -10,7 +10,6 @@
 
 void BattleAI::Init() {
 
-	//仮置き
 	aiMoveMode = AI_MOVEMODE_TOCENTER;
 	aiAttackMode = AI_ATTACKMODE_TARGET;
 
@@ -26,21 +25,21 @@ void BattleAI::Init() {
 	//技データ取得
 	atkData = owner->GetAttackData();
 
-	//とりあえずターゲット設定
+	//ターゲット設定
 	TargetGet();
 
-	//とりあえずレンジ設定
+	//レンジ設定
 	GenerateTTDistanceBase();
 
-	//とりあえず使う技設定
+	//使う技設定
 	SelectAtkAction();
 
-	//とりあえずレンジ選ぶ
+	//レンジ選ぶ
 	ThinktoTargetDistance();
 
 
 
-	//とりあえずAI生成
+	//AI生成
 	//moveAI = new MoveAI_ToCenter(this);
 	moveAI = new MoveAI_ToTarget(this);
 
@@ -172,10 +171,10 @@ void BattleAI::ToTarget( ) {
 
 
 
-	//自分よりも相手のほうが一定以上高ければジャンプ 仮置き
+	//自分よりも相手のほうが一定以上高ければジャンプ
 	if (owner->GetPosition().y < 0.0f + target->GetPosition().y) owner->Jump();
 
-	//自分よりも相手のほうが一定以上低くてすり抜け可能足場にいるならすり抜け 仮置き
+	//自分よりも相手のほうが一定以上低くてすり抜け可能足場にいるならすり抜け
 	if (owner->GetPosition().y > 0.0f + target->GetPosition().y) {
 		owner->ThroughFloor();
 	}
@@ -245,7 +244,7 @@ void BattleAI::SelectAtkAction() {
 		selectAtk = (ATTACK_KIND)pAtkOption[r];
 
 	}
-	//候補リストが作れなかったらどうしようかわからないけどとりあえずランダムで設定
+	//候補リストが作れなかったらランダムで設定
 	else {
 		selectAtk = (ATTACK_KIND)(rand() % 4);
 
@@ -258,9 +257,6 @@ void BattleAI::SelectAtkAction() {
 
 void BattleAI::TargetGet() {
 	
-	//実際には距離とかストックとかダメージとかを参照してターゲット決めればいいけど
-	//とりあえず近くの奴適当に指しとくか
-
 	target = PlayerManager::GetNearPlayer(owner);
 
 }
@@ -269,7 +265,7 @@ void BattleAI::ThinktoTargetDistance() {
 
 
 
-	//どれにするか選ぶ　仮置きランダム
+	//どれにするか選ぶ
 
 	int r = rand() % TTRANGE_MAX;
 

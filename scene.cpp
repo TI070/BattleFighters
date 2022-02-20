@@ -131,7 +131,6 @@ void Scene::SceneStartFunc(SCENE_KIND endScene) {
 		Title::Initialize();
 		Manager::TitleInit();
 
-		//‚Æ‚è‚ ‚¦‚¸
 		GameSystem::Init();
 
 		break;

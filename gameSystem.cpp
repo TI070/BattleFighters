@@ -108,7 +108,7 @@ void GameSystem::GameSet() {
 	//ゲームセットを示すメッセージ画像を出す
 	ImageManager::SetImage({ SCREEN_WIDTH / 2, SCREEN_HEIGHT/2 - 100 }, { 450,150 }, ImageManager::GetTexId(TEX_UI_GAMESET), 0);
 
-	//順位付け 仮置き
+	//順位付け
 	SetRankStock();
 
 	//画面遷移を呼ぶ
@@ -366,10 +366,7 @@ void GameSystem::OnePlayerInit() {
 
 	case STAGEEND:
 
-		///クリア画像を出す
-
-
-		//とりあえず戻す
+		//戻す
 		Scene::SetCurrentScene(SCENE_TITLE, 180);
 
 		break;

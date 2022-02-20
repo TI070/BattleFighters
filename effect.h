@@ -40,7 +40,7 @@ public:
 
 	virtual void Init(D3DXVECTOR3 s_pos, float s_size, unsigned short texId) = 0;
 	virtual void Init(D3DXVECTOR3 s_pos, D3DXVECTOR2 s_size, unsigned short texId) = 0;
-	virtual void Init() = 0;//‰¼’u‚«
+	virtual void Init() = 0;
 	virtual void Uninit() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;

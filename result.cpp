@@ -159,7 +159,7 @@ void Result::Update() {
 
 	//ResultBgUpdate();
 
-	//とりあえずタイトルに戻す
+	//タイトルに戻す
 	if (KeyManager_Trigger(KM_DECIDE) || ControllerManager::GetButtonState(0).aButton == BS_TRIGGER) {
 		
 		//currenStageを参照して次のステージに行くかを判断する

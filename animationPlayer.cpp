@@ -64,7 +64,6 @@ void AnimationPlayer::Init() {
 	grapCooltime = 0;
 	ShieldBreakTime = 0;
 
-	//仮置き
 	//SetCharacterParameter();
 	SetStates();
 	charaCon = CC_NORMAL;
@@ -305,7 +304,7 @@ void AnimationPlayer::Draw() {
 
 	a_Model->Draw();
 
-	//パラメータ初期化しておく　仮置き
+	//パラメータ初期化しておく
 	Renderer::SetParameter({0,0,0,0});
 
 	//UI描画
@@ -1893,14 +1892,12 @@ void AnimationPlayer::CharacterBound(D3DXVECTOR3 s_pos) {
 	if (vel < BOUND_LIMIT) return;
 
 	//当たり方によって反射角を変更
-	//とりあえず簡易版
-	//blownVelocity.x *= -1;
 	blownVelocity.y *= -1;
 
 	//バウンドエフェクト
-	D3DXVECTOR3 effPos = m_Position;//仮　後で調整
+	D3DXVECTOR3 effPos = m_Position;
 
-	float effSize = 2.0f;//仮 後で調整
+	float effSize = 2.0f;
 
 	//前に表示するために動かす
 	effPos.z -= 1.0f;
@@ -1984,7 +1981,7 @@ void AnimationPlayer::GrabChara() {
 	}
 
 	//つかみ判定を生成し、その中に対象がいるかチェック
-	//ステータス仮置き
+
 	Area grabArea;
 	if (charaDir == CD_RIGHT) {
 		grabArea.leftMax = m_Position.x;
@@ -2059,7 +2056,7 @@ void AnimationPlayer::GrabingAction() {
 
 
 
-	//投げの種類は検討　とりあえず一種類だけ作る？
+	//投げ
 	if (CheckIputKey(CK_RIGHT, KEY_TRIGGER)) {
 		//右投げ
 
@@ -2243,7 +2240,7 @@ void AnimationPlayer::SetStartStates() {
 	case 1:
 
 		charaDir = CD_RIGHT;
-		m_Position.x += -2;//仮置き
+		m_Position.x += -2;
 		m_Position.y = 0.1f;
 		m_Position.z = 0.0f;
 		DirectionRoll({ 1,0 }, 270);
@@ -2253,7 +2250,7 @@ void AnimationPlayer::SetStartStates() {
 	case 2:
 
 		charaDir = CD_LEFT;
-		m_Position.x += 2;//仮置き
+		m_Position.x += 2;
 		m_Position.y = 0.1f;
 		m_Position.z = 0.0f;
 		DirectionRoll({ -1,0 }, 270);
@@ -2261,7 +2258,7 @@ void AnimationPlayer::SetStartStates() {
 	case 3:
 
 		charaDir = CD_RIGHT;
-		m_Position.x -= 3;//仮置き
+		m_Position.x -= 3;
 		m_Position.y = 0.1f;
 		m_Position.z = 0.0f;
 		DirectionRoll({ 1,0 }, 270);
@@ -2269,7 +2266,7 @@ void AnimationPlayer::SetStartStates() {
 	case 4:
 
 		charaDir = CD_LEFT;
-		m_Position.x += 3;//仮置き
+		m_Position.x += 3;
 		m_Position.y = 0.1f;
 		m_Position.z = 0.0f;
 		DirectionRoll({ -1,0 }, 270);

@@ -89,7 +89,6 @@ void SystemMessage::Update() {
 
 	if (pList.size() == 0) return;
 
-	//‰¼
 	if (KeyManager_Trigger(KM_K)) {
 		TurnPage();
 	}

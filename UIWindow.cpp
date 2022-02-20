@@ -140,7 +140,7 @@ void StatusWindow::StockImageSet() {
 	D3DXVECTOR2 startPos;
 	startPos.x = m_Position.x;
 	startPos.y = m_Position.y;
-	//‰¼’u‚«
+
 	startPos.x += STOCKIMAGE_OFFSETX;
 	startPos.y += STOCKIMAGE_OFFSETY;
 

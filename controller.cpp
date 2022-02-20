@@ -344,6 +344,8 @@ void ControllerManager::DebugDraw() {
 	float lx = key.lX;
 	float ly = key.lY;
 	int aB, bB, xB, yB, rB, lB;
+	int baB, bbB, bxB, byB, brB, blB;
+
 	aB = configStates[0].aButtonSet;
 	bB = configStates[0].bButtonSet;
 	xB = configStates[0].xButtonSet;
@@ -351,24 +353,42 @@ void ControllerManager::DebugDraw() {
 	rB = configStates[0].rButtonSet;
 	lB = configStates[0].lButtonSet;
 
+	baB = buttonStates[0].aButton;
+	bbB = buttonStates[0].bButton;
+	bxB = buttonStates[0].xButton;
+	byB = buttonStates[0].yButton;
+	brB = buttonStates[0].rButton;
+	blB = buttonStates[0].lButton;
+
+
 	ImGui::Begin("cState");
 
 	//ImGui::InputInt("connnectNum", &connectNum);
-	ImGui::InputInt("a", &aB);
-	ImGui::InputInt("b", &bB);
-	ImGui::InputInt("x", &xB);
-	ImGui::InputInt("y", &yB);
-	ImGui::InputInt("r", &rB);
-	ImGui::InputInt("l", &lB);
+	ImGui::InputInt("config_a", &aB);
+	ImGui::InputInt("config_b", &bB);
+	ImGui::InputInt("config_x", &xB);
+	ImGui::InputInt("config_y", &yB);
+	ImGui::InputInt("config_r", &rB);
+	ImGui::InputInt("config_l", &lB);
+
+	ImGui::InputInt("states_a", &baB);
+	ImGui::InputInt("states_b", &bbB);
+	ImGui::InputInt("states_x", &bxB);
+	ImGui::InputInt("states_y", &byB);
+	ImGui::InputInt("states_r", &brB);
+	ImGui::InputInt("states_l", &blB);
+
 
 	ImGui::End();
 
 }
 
-void ControllerManager::KeyConfig(BUTTON_KIND s_baseButton,BUTTON_KIND s_bk, int index) {
+void ControllerManager::KeyConfig(BUTTON_KIND s_baseButton,BUTTON_KIND s_bk, int keyNum ,int index) {
 
 	BUTTON_KIND changeBK;
 
+
+	/*
 	if (s_baseButton == configStates[index].aButtonSet) {
 		changeBK = BK_BUTTON_A;
 	}
@@ -386,36 +406,56 @@ void ControllerManager::KeyConfig(BUTTON_KIND s_baseButton,BUTTON_KIND s_bk, int
 	}
 	else if (s_baseButton == configStates[index].lButtonSet) {
 		changeBK = BK_BUTTON_L;
-	}
-
-
+	}*/
+	/*
 	if (s_baseButton == BK_BUTTON_A) {
-		//changeBK = configStates[index].aButtonSet;
-		configStates[index].aButtonSet = s_bk;
+		changeBK = configStates[index].aButtonSet;
 	}
 	else if (s_baseButton == BK_BUTTON_B) {
-		//changeBK = configStates[index].bButtonSet;
+		changeBK = configStates[index].bButtonSet;
+	}
+	else if (s_baseButton == BK_BUTTON_X) {
+		changeBK = configStates[index].xButtonSet;
+	}
+	else if (s_baseButton == BK_BUTTON_Y) {
+		changeBK = configStates[index].yButtonSet;
+	}
+	else if (s_baseButton == BK_BUTTON_R) {
+		changeBK = configStates[index].rButtonSet;
+	}
+	else if (s_baseButton == BK_BUTTON_L) {
+		changeBK = configStates[index].lButtonSet;
+	}
+	*/
+
+	if (s_baseButton == BK_BUTTON_A) {
+		changeBK = configStates[index].aButtonSet;
+		configStates[index].aButtonSet = s_bk;
+
+	}
+	else if (s_baseButton == BK_BUTTON_B) {
+		changeBK = configStates[index].bButtonSet;
 		configStates[index].bButtonSet = s_bk;
 	}
 	else if (s_baseButton == BK_BUTTON_X) {
-		//changeBK = configStates[index].xButtonSet;
+		changeBK = configStates[index].xButtonSet;
 		configStates[index].xButtonSet = s_bk;
 	}
 	else if (s_baseButton == BK_BUTTON_Y) {
-		//changeBK = configStates[index].yButtonSet;
+		changeBK = configStates[index].yButtonSet;
 		configStates[index].yButtonSet = s_bk;
 	}
 	else if (s_baseButton == BK_BUTTON_R) {
-		//changeBK = configStates[index].rButtonSet;
+		changeBK = configStates[index].rButtonSet;
 		configStates[index].rButtonSet = s_bk;
 	}
 	else if (s_baseButton == BK_BUTTON_L) {
-		//changeBK = configStates[index].lButtonSet;
+		changeBK = configStates[index].lButtonSet;
 		configStates[index].lButtonSet = s_bk;
 	}
 
-	//該当ボタンがすべて別のキーにアサインされていたら入れ替える
-
+	//該当ボタンが別のキーにアサインされていたら入れ替える
+	/*
 	if (s_bk == BK_BUTTON_A) {
 		configStates[index].aButtonSet = changeBK;
 	}
@@ -434,7 +474,27 @@ void ControllerManager::KeyConfig(BUTTON_KIND s_baseButton,BUTTON_KIND s_bk, int
 	else if (s_bk == BK_BUTTON_L) {
 		configStates[index].lButtonSet = changeBK;
 	}
+	*/
 
+	if (s_baseButton != BK_BUTTON_A && s_bk == configStates[index].aButtonSet) {
+		configStates[index].aButtonSet = changeBK;
+	}
+	else if (s_baseButton != BK_BUTTON_B && s_bk == configStates[index].bButtonSet) {
+		configStates[index].bButtonSet = changeBK;
+	}
+	else if (s_baseButton != BK_BUTTON_X && s_bk == configStates[index].xButtonSet) {
+		configStates[index].xButtonSet = changeBK;
+	}
+	else if (s_baseButton != BK_BUTTON_Y && s_bk == configStates[index].yButtonSet) {
+		configStates[index].yButtonSet = changeBK;
+	}
+	else if (s_baseButton != BK_BUTTON_R && s_bk == configStates[index].rButtonSet) {
+		configStates[index].rButtonSet = changeBK;
+	}
+	else if (s_baseButton != BK_BUTTON_L && s_bk == configStates[index].lButtonSet) {
+		configStates[index].lButtonSet = changeBK;
+	}
+	
 }
 
 void ControllerManager::KeyConInit(int index) {

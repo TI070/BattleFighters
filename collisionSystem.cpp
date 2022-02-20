@@ -66,10 +66,10 @@ void CollisionSystem::CollisionDamageObjectandCharacter() {
 
 				////エフェクトの発生
 				//エフェクトサイズ設定
-				float effSize = 2.0f;//仮 後で調整
+				float effSize = 2.0f;
 
 				//エフェクト位置設定
-				D3DXVECTOR3 effPos = pPlayer->GetPosition();//仮　後で調整
+				D3DXVECTOR3 effPos = pPlayer->GetPosition();
 				//前に表示するために動かす
 				effPos.z -= 1.0f;
 				effPos.y += 1.5f;
@@ -83,7 +83,7 @@ void CollisionSystem::CollisionDamageObjectandCharacter() {
 				AudioManager::AudioPlay(pDamageObj->GetSoundKind(),false);
 
 
-				//仮の処理として消す
+				//消す処理
 				pDamageObj->SetDestroy();
 
 
@@ -263,7 +263,7 @@ void CollisionSystem::CollisionDamageObjectandDamageObject() {
 				if (pDamageObj2->GetObjKind() == DOBJ_SHIELD && pDamageObj->GetObjKind() == DOBJ_NORMAL) {
 
 					//シールド側の耐久値を削る
-					//とりあえずダメージ分　仮置き
+					//ダメージ分
 					int sDamage = pDamageObj->GetDamage();
 					pDamageObj2->GetOwner()->ShieldDamage(sDamage);
 					pDamageObj2->GetOwner()->shieldWParameter = -0.8f;
@@ -278,7 +278,7 @@ void CollisionSystem::CollisionDamageObjectandDamageObject() {
 				else if (pDamageObj->GetObjKind() == DOBJ_SHIELD && pDamageObj2->GetObjKind() == DOBJ_NORMAL) {
 
 					//シールド側の耐久値を削る
-					//とりあえずダメージ分　仮置き
+					//ダメージ分
 					int sDamage = pDamageObj2->GetDamage();
 					pDamageObj->GetOwner()->ShieldDamage(sDamage);
 					pDamageObj->GetOwner()->shieldWParameter = -0.8f;

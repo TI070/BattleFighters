@@ -38,7 +38,7 @@ public:
 	}
 	virtual void Init(D3DXVECTOR3 s_pos, float s_size, const char* textureName);
 	virtual void Init(D3DXVECTOR3 s_pos, float s_size, unsigned short texId);
-	virtual void Init() {};//‰¼’u‚«
+	virtual void Init() {};
 	virtual void Uninit();
 	virtual void Update();
 	virtual void Draw();

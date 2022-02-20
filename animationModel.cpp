@@ -375,7 +375,7 @@ void AnimationModel::Update(const char* AnimationName, const char* AnimationName
 		aiVector3D pos1 = nodeAnim->mPositionKeys[f].mValue;
 
 		aiNodeAnim* nodeAnim2;
-		//とりあえずnullにならないようにブロック
+		//nullにならないようにブロック
 		if (c < animation2->mNumChannels) {
 			nodeAnim2 = animation2->mChannels[c];
 			

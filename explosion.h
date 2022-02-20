@@ -50,7 +50,7 @@ public:
 	}
 	void Init(D3DXVECTOR3 s_pos, float s_size, unsigned short texId);
 	void Init(D3DXVECTOR3 s_pos, D3DXVECTOR2 s_size, unsigned short texId);
-	void Init() {};//‰¼’u‚«
+	void Init() {};
 	void Uninit();
 	void Update();
 	void Draw();

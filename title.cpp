@@ -719,21 +719,41 @@ void Title::MenuSelect() {
 			else {
 				//コントローラー番号と選択しているカーソル位置をチェックする
 				BUTTON_KIND bk;
+				int keyNum;
 				if (cursorKeyConfig == KCM_BUTTON1) {
-					bk = BK_BUTTON_A;
+					//bk = BK_BUTTON_A;
+					//bk = ControllerManager::GetCS(keyconfigControllerNum).aButtonSet;
+					bk = ControllerManager::GetConfigStates(keyconfigControllerNum, BK_BUTTON_A);
+					//setBK = BK_BUTTON_A;
+					keyNum = BK_BUTTON_A;
 				}
 				else if (cursorKeyConfig == KCM_BUTTON2) {
-					bk = BK_BUTTON_B;
+					//bk = BK_BUTTON_B;
+					//bk = ControllerManager::GetCS(keyconfigControllerNum).bButtonSet;
+					bk = ControllerManager::GetConfigStates(keyconfigControllerNum, BK_BUTTON_B);
+					//setBK = BK_BUTTON_B;
+					keyNum = BK_BUTTON_B;
 				}
 				else if (cursorKeyConfig == KCM_BUTTON3) {
-					bk = BK_BUTTON_X;
+					//bk = BK_BUTTON_X;
+					//bk = ControllerManager::GetCS(keyconfigControllerNum).xButtonSet;
+					bk = ControllerManager::GetConfigStates(keyconfigControllerNum, BK_BUTTON_X);
+					//setBK = BK_BUTTON_X;
+					keyNum = BK_BUTTON_X;
 				}
 				else if (cursorKeyConfig == KCM_BUTTON4) {
-					bk = BK_BUTTON_R;
+					//bk = BK_BUTTON_R;
+					//bk = ControllerManager::GetCS(keyconfigControllerNum).rButtonSet;
+					bk = ControllerManager::GetConfigStates(keyconfigControllerNum, BK_BUTTON_R);
+					//setBK = BK_BUTTON_R;
+					keyNum = BK_BUTTON_R;
 				}
 
+				//setBK = ControllerManager::GetConfigStates(keyconfigControllerNum, setBK);
+
 				//ControllerManager::KeyConfig(setBK, bk, 0);
-				ControllerManager::KeyConfig(bk,setBK , keyconfigControllerNum);
+				//ControllerManager::KeyConfig(bk,setBK , keyconfigControllerNum);
+				ControllerManager::KeyConfig(bk, setBK,keyNum, keyconfigControllerNum);
 
 				AudioManager::AudioPlay(AK_SE_CURSORMOVE, false);
 
@@ -846,7 +866,7 @@ void Title::MenuSelect() {
 			acceptCooltime = 20;
 		}
 
-		//とりあえず戻る
+		//戻る
 		if (KeyManager_Trigger(KM_CANCEL) || ControllerManager::GetButtonState(0).bButton == BS_TRIGGER) {//戻る
 
 			if (acceptCooltime > 0) break;
@@ -1207,7 +1227,7 @@ void Title::HandMove() {
 	}
 
 
-	//プレイヤ－２仮置き
+	//プレイヤ－２
 	if (KeyManager_Press(KM_K) || ControllerManager::GetButtonState(1).LstickX == 1000) {
 		D3DXVECTOR3 sPos = P2Hand.image->GetPosition();
 		sPos.x += MARKER_MOVESPEED;
